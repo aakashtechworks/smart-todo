@@ -1,7 +1,13 @@
 import React from 'react'
+import {useState} from "react"
 import { NavLink } from 'react-router-dom'
 
 const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+    const toggleMenu = () =>{
+        setIsMenuOpen(!isMenuOpen)
+    }
   return (
     <header className='sticky top-0 z-50 bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 text-white p-5'>
         <nav className='max-w-6xl mx-auto flex justify-between items-center px-6 py-4'>
@@ -20,6 +26,8 @@ const Header = () => {
                     </NavLink>
                 </li>
             </ul>
+
+            <button onClick={toggleMenu}>{isMenuOpen ? "x" : "="}</button>
         </nav>
     </header>
   )
