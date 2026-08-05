@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import TodoForm from '../components/todo/TodoForm'
+import TodoList from '../components/todo/TodoList'
 
 const Home = () => {
   const [todos, setTodos] = useState([])
@@ -12,6 +13,8 @@ const Home = () => {
       <h1 className='text-4xl md:text-5xl font-bold text-center text-slate-800 mb-8'>Smart Todo App</h1>
 
       <TodoForm addTodo={addTodo} />
+
+      <TodoList todos={todos} />
     </main>
   )
 }
