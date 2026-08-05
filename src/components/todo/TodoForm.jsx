@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const TodoForm = () => {
+const TodoForm = ({addTodo}) => {
     const [task, setTask] = useState("")
     
     const handleSubmit = (e)=>{
@@ -9,7 +9,7 @@ const TodoForm = () => {
         if(task.trim() === "" ){
            return;
         }
-        console.log(task)
+        addTodo(task)
         setTask("")
     }
 
