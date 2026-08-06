@@ -17,13 +17,19 @@ const Home = () => {
   const deleteTodo = (id)=>{
     setTodos(todos.filter((todo) => todo.id !== id))
   }
+
+  const toggleComplete = (id) =>{
+    setTodos(
+      todos.map((todo)=> todo.id === id ? {...todo, completed: !todo.completed} : todo)
+    )
+  }
   return (
     <main className='min-h-screen flex flex-col items-center bg-gradient-to-br from-slate-100 via-indigo-100 to-purple-100 px-4 py-10'>
       <h1 className='text-4xl md:text-5xl font-bold text-center text-slate-800 mb-8'>Smart Todo App</h1>
 
       <TodoForm addTodo={addTodo} />
 
-      <TodoList todos={todos} deleteTodo={deleteTodo} />
+      <TodoList todos={todos} deleteTodo={deleteTodo} toggleComplete={toggleComplete}/>
 
     </main>
   )
