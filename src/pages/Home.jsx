@@ -7,11 +7,15 @@ const Home = () => {
   const [todos, setTodos] = useState([])
 
   const addTodo = (newTask)=>{
-      setTodos([...todos, newTask])
+      setTodos([...todos, {
+        id: Date.now(),
+        text: newTask,
+        completed: false,
+      }])
   }
 
-  const deleteTodo = (index)=>{
-    setTodos(todos.filter((_,i) => i !== index))
+  const deleteTodo = (id)=>{
+    setTodos(todos.filter((todo) => todo.id !== id))
   }
   return (
     <main className='min-h-screen flex flex-col items-center bg-gradient-to-br from-slate-100 via-indigo-100 to-purple-100 px-4 py-10'>
