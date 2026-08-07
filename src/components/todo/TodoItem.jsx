@@ -2,7 +2,7 @@ import React from 'react'
 import { FaEdit, FaTrash } from 'react-icons/fa'
 
 
-const TodoItem = ({todo, deleteTodo, toggleComplete}) => {
+const TodoItem = ({todo, deleteTodo, toggleComplete, setEditTodo}) => {
   return (
     <div className='w-full bg-white/80 backdrop-blur-lg rounded-2xl shadow-md border border-gray-200 px-5 py-4 flex items-center justify-between hover:shadow-xl hover:-translate-y-1 transition-all duration-300 gap-10'>
 
@@ -14,7 +14,7 @@ const TodoItem = ({todo, deleteTodo, toggleComplete}) => {
         <div className='flex items-center gap-6'>
              <input type="checkbox" checked={todo.completed} onChange={()=>toggleComplete(todo.id)} className='w-8 h-8 accent-green-600 rounded-2xl cursor-pointer'/>
 
-            <button className='w-10 h-10 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center'> <FaEdit/> </button>
+            <button onClick={()=> setEditTodo(todo)} className='w-10 h-10 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center'> <FaEdit/> </button>
 
             <button onClick={()=> deleteTodo(todo.id)} className='w-10 h-10 rounded-full bg-red-100 text-red-600 hover:bg-red-600 hover:text-white transition-all duration-300 flex items-center justify-center'> <FaTrash/> </button>
         </div>

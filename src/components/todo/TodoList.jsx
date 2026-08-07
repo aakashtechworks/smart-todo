@@ -1,7 +1,7 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 
-const TodoList = ({todos, deleteTodo, toggleComplete}) => {
+const TodoList = ({todos, deleteTodo, toggleComplete, setEditTodo}) => {
   return (
     <div className='max-w-3xl mx-auto mt-8 space-y-4'>
       {todos.length === 0 ? (
@@ -11,7 +11,7 @@ const TodoList = ({todos, deleteTodo, toggleComplete}) => {
       </div>) : 
 
       (todos.map((todo)=>(
-            <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} toggleComplete={toggleComplete}/>
+            <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} toggleComplete={toggleComplete} setEditTodo={setEditTodo}/>
         )))
       }
     </div>

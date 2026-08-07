@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 
-const TodoForm = ({addTodo}) => {
+const TodoForm = ({addTodo, editTodo, setEditTodo, updateTodo}) => {
     const [task, setTask] = useState("")
+
+    useEffect(()=>{
+      if(editTodo) {
+        setTask(editTodo.text)
+      }
+    }, [editTodo])
     
     const handleSubmit = (e)=>{
         e.preventDefault()
-        if(task.trim() === "" ){
-           return;
+        if(editTodo){
+           updateTodo(editTodo.id, task)
+           setEditTodo(null)
         }
-        addTodo(task)
+        else{
+          addTodo(task)
+        }
         setTask("")
     }
 
@@ -22,7 +31,7 @@ const TodoForm = ({addTodo}) => {
         onChange={(e)=>setTask(e.target.value)} 
         className=' px-5 py-3 rounded-xl border border-slate-300 bg-white/80 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-indigo-500'/>
 
-        <button type='submit' className='px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold hover:scale-105 transition duration-300'>Add Task</button>
+        <button type='submit' className='px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold hover:scale-105 transition duration-300'>{editTodo ? "Update Task" : "Add Task"}</button>
     </form>
   )
 }
