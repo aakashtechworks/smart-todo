@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import TodoForm from '../components/todo/TodoForm'
 import TodoList from '../components/todo/TodoList'
 import TodoItem from '../components/todo/TodoItem'
+import { FaSearch } from 'react-icons/fa'
 
 const Home = () => {
   const [todos, setTodos] = useState(()=>{
@@ -16,6 +17,8 @@ const Home = () => {
   }, [todos])
 
   const [editTodo, setEditTodo] = useState(null)
+
+  const [search, setSearch] = useState("")
 
   const addTodo = (newTask)=>{
       setTodos([...todos, {
@@ -47,6 +50,10 @@ const Home = () => {
     )
   }
 
+  const filterTodos = todos.filter((todo)=> todo.text.toLowerCase().includes(search.toLowerCase()))
+  console.log(filterTodos)
+
+
   return (
     <main className='min-h-screen flex flex-col items-center bg-gradient-to-br from-slate-100 via-indigo-100 to-purple-100 px-4 py-10'>
       <h1 className='text-4xl md:text-5xl font-bold text-center text-slate-800 mb-8'>Smart Todo App</h1>
@@ -68,9 +75,19 @@ const Home = () => {
         </div>
       </div>
 
+      <div className='w-full md:w-96 relative'>
+        <FaSearch className='absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 z-10'/>
+
+      <input type="text" 
+      placeholder='Search todos...'
+      value={search}
+      onChange={(e)=>setSearch(e.target.value)}
+      className='w-full pl-11 pr-11 px-4 py-3 rounded-xl border border-gray-300 bg-white/80 backdrop-blur-md shadow-sm outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all'/>
+      </div>
+
       <TodoForm addTodo={addTodo} editTodo={editTodo} setEditTodo={setEditTodo} updateTodo={updateTodo}/>
 
-      <TodoList todos={todos} deleteTodo={deleteTodo} toggleComplete={toggleComplete} setEditTodo={setEditTodo}/>
+      <TodoList todos={filterTodos} deleteTodo={deleteTodo} toggleComplete={toggleComplete} setEditTodo={setEditTodo}/>
 
     </main>
   )
