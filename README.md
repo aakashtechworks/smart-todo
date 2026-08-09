@@ -1,4 +1,4 @@
-<!-- # 📝 Smart Todo
+# 📝 Smart Todo
 
 A modern and responsive Todo Application built with React to practice real-world React concept and application development.
 
@@ -46,4 +46,4 @@ This project was created as a practical React learning project to understand and
 
 - Dark Mode
 - Better Animation
-- Additional UI improvements -->
+- Additional UI improvements
