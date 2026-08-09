@@ -29,6 +29,8 @@ const Header = () => {
                 </ul>
 
             <button className='lg:hidden' onClick={toggleMenu}>{isMenuOpen ? "x" : "="}</button>
+
+            
         </nav>
             {isMenuOpen && (
                 <ul className='flex flex-col gap-6 lg:hidden '>
@@ -47,7 +49,7 @@ const Header = () => {
                 </ul>
             )}
             
-
+           
            
         
     </header>

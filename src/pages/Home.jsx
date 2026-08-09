@@ -21,7 +21,6 @@ const Home = () => {
   const [search, setSearch] = useState("")
 
   const [filter, setFilter] = useState("all")
-  console.log(filter)
 
   const addTodo = (newTask)=>{
       setTodos([...todos, {
@@ -60,6 +59,7 @@ const Home = () => {
 
     return matchesSearch && matchesFilter
   })
+  
   
 
 
